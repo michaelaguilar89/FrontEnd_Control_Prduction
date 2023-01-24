@@ -42,26 +42,26 @@ export class CreateUpdateProductionComponent implements OnInit {
   ngOnInit() {
     if(this.id==0){
           
-    var date = new Date().toLocaleDateString();
+    //var date = new Date().toLocaleDateString();
     var date2= new Date();
     var time=new Date().toLocaleTimeString();
 
-    console.log('date : '+date);
+   // console.log('date : '+date);
     console.log('date-time : '+date2);
     console.log('time : '+time);
     this.form.patchValue({
-      fecha:date,
-      horaInicio:time
+       fecha:this.myService.getDate(),
+     // horaInicio:time
     })
     }
   }
 
   action(){
-    if(this.id>=1){
-      this.updateConsumo();
-    }else{
+   // if(this.id>=1){
+     // this.updateConsumo();
+    //}else{
       this.saveConsumo();
-    }
+    //}
   }
 
   updateConsumo(){
@@ -89,6 +89,7 @@ export class CreateUpdateProductionComponent implements OnInit {
   }
   saveConsumo(){
     console.log(this.form);
+    var newdate= new Date(this.myService.getDate())
     const consumo:Consumo={
       fecha:this.form.get('fecha')?.value,
       tanque:this.form.get('tanque')?.value,
@@ -101,13 +102,15 @@ export class CreateUpdateProductionComponent implements OnInit {
       comentario:this.form.get('comentario')?.value
 
     };
-    console.log(consumo);
+   
+   console.log(consumo);
    this.myService.addConsumo(consumo).subscribe(data =>{
-       //alert('Registro guardado exitosamente');
+      
+      
         this.toastr.success('Registro Agregado','El registro se ha guardado exitosamente ');
           this.route.navigate(['/list']);
     }
-       ,(errorData)=>this.toastr.error('Error :','Error on App')
+      ,(errorData)=>this.toastr.error('Error :','Error on App')
       
       )
   

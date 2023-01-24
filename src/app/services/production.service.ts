@@ -23,11 +23,16 @@ export class ProductionService {
       this.list=data;
     })
   }
-  addConsumo(consumo:Consumo){
-    return this.http.post(this.myappurl,consumo);
+  addConsumo(consumo:Consumo):Observable<Consumo>{
+    return this.http.post<Consumo>(this.myappurl,consumo);
   }
 
-  updateConsumo(consumo:Consumo){
-    return this.http.put(this.myappurl,consumo);
+  updateConsumo(consumo:Consumo):Observable<Consumo>{
+    return this.http.put<Consumo>(this.myappurl,consumo);
+  }
+
+  getDate(){
+   var date = new Date().toLocaleDateString();
+   return date;
   }
 }
