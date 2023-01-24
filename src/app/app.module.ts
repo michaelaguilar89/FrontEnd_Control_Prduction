@@ -3,7 +3,9 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-
+import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule} from '@angular/common/http'
+//components
 import { ListProductionComponent } from './components/list-production/list-production.component';
 import { CreateUpdateProductionComponent } from './components/create-update-production/create-update-production.component';
 import { DeleteProductionComponent } from './components/delete-production/delete-production.component';
@@ -24,7 +26,9 @@ import { HeaderComponent } from './components/header2/header.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
