@@ -42,16 +42,18 @@ export class CreateUpdateProductionComponent implements OnInit {
   ngOnInit() {
     if(this.id==0){
           
-    //var date = new Date().toLocaleDateString();
-    var date2= new Date();
+    var date = new Date()
+    var date2= date.toISOString().slice(0,10);
     var time=new Date().toLocaleTimeString();
 
-   // console.log('date : '+date);
-    console.log('date-time : '+date2);
-    console.log('time : '+time);
+    // console.log('date : '+date);
+     // console.log('date2 : '+date2);
+    //console.log('time : '+time);
     this.form.patchValue({
-       fecha:this.myService.getDate(),
-     // horaInicio:time
+      fecha:date2,
+      horaInicio:time,
+      
+    
     })
     }
   }

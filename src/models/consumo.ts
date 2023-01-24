@@ -1,6 +1,6 @@
 export class Consumo{
     id?:number;
-    fecha!: Date;
+    fecha!: DateConstructor;
     tanque!: string;
     productoName!: string;
     lote!: string;
