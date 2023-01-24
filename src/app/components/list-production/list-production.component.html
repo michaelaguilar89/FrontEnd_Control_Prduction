@@ -1,1 +1,42 @@
-<p>list-production works!</p>
+<div class="container">
+    
+        <div class="row ">
+            <div class="col-sm-10 mx-auto mt-5">
+                <table class="table mx-auto border">
+                    <thead>
+                      <tr>
+                        <th scope="col">Fecha</th>
+                        <th scope="col">Tanque</th>
+                        <th scope="col">Producto</th>
+                        <th scope="col">Lote</th>
+                        <th scope="col">Cantidad(Kg)</th>
+                        <th scope="col">Hora inicio preparacion</th>
+                        <th scope="col">Nivel Final</th>
+                        <th scope="col">Responsable</th>
+                        <th scope="col">Comentarios</th>
+                        <th scope="col">Acciones</th>
+                        <th scope="button"><a class="btn btn-primary" (click)="new()" role="button">New</a></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let product of service.list.result">
+                        <td>{{product.fecha}}</td>
+                        <td>{{product.tanque}}</td>
+                        <td>{{product.productoName}}</td>
+                        <td>{{product.lote}}</td>
+                        <td>{{product.cantidad}}</td>
+                        <td>{{product.horaInicio}}</td>
+                        <td>{{product.nivelFinal}}</td>
+                        <td>{{product.responsable}}</td>
+                        <td>{{product.comentario}}</td>
+                        <td><a type="button" (click)="edit(product)"  class="btn btn-success">Edit</a></td>
+                      </tr>
+                    </tbody>
+                  </table>
+            </div>
+           
+
+        </div>
+        
+   
+</div>
