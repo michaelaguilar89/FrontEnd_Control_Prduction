@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Consumo } from 'src/models/consumo';
 import { ProductionService } from 'src/app/services/production.service';
 import { FormGroup,FormBuilder ,Validators} from '@angular/forms';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-list-production',
   templateUrl: './list-production.component.html',
@@ -11,7 +12,8 @@ export class ListProductionComponent {
   form:FormGroup;
 
   constructor(public service:ProductionService,
-              private fb:FormBuilder){
+              private fb:FormBuilder,
+              private route:Router){
       this.form=this.fb.group({
         searchDate:['',Validators.required]
     })
@@ -42,7 +44,7 @@ ngOnInit():void{
 
   }
   new(){
-
+    this.route.navigate(['create']);
   }
 
   edit(product:Consumo){

@@ -1,8 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup,FormBuilder,Validators } from '@angular/forms';
 import { Consumo } from 'src/models/consumo';
 import { ProductionService } from 'src/app/services/production.service';
-//import { ToastrService} from 'ngx-toastr ';
+//import { ToastrService} from 'ngx-toastr';
 import { Route, Router } from '@angular/router';
 
 @Component({
@@ -10,7 +10,7 @@ import { Route, Router } from '@angular/router';
   templateUrl: './create-update-production.component.html',
   styleUrls: ['./create-update-production.component.css']
 })
-export class CreateUpdateProductionComponent {
+export class CreateUpdateProductionComponent implements OnInit {
 
   form:FormGroup;
   id=0;
@@ -20,7 +20,9 @@ export class CreateUpdateProductionComponent {
 
   constructor(private fb:FormBuilder,
               private myService:ProductionService,
-              private route:Router){
+              private route:Router,
+              //private toastr:ToastrService
+              ){
                 this.form=this.fb.group({
                   id:0,
                   fecha:['',Validators.required],
@@ -31,10 +33,27 @@ export class CreateUpdateProductionComponent {
                   horaInicio:['',Validators.required],
                   nivelFinal:['',Validators.required],
                   responsable:['',Validators.required],
-                  comentario:['',Validators.required]
+                  comentario:['']
                 })
             
 
+  }//fin del constructor
+
+  ngOnInit() {
+    if(this.id==0){
+          
+    var date = new Date().toLocaleDateString();
+    var date2= new Date();
+    var time=new Date().toLocaleTimeString();
+
+    console.log('date : '+date);
+    console.log('date-time : '+date2);
+    console.log('time : '+time);
+    this.form.patchValue({
+      fecha:date,
+      horaInicio:time
+    })
+    }
   }
 
   action(){
@@ -61,12 +80,12 @@ export class CreateUpdateProductionComponent {
       
     }
 
-    this.myService.updateConsumo(consumo).subscribe(data=>{
+   // this.myService.updateConsumo(consumo).subscribe(data=>{
      // this.toastr.info('Registro actualizado','El registro id :'+this.id+' se ha actulizado');
       this.route.navigate(['/list']);
-    }
+    //}
     //,(errorData)=>this.toastr.error('Error :','Error on App')
-    )
+    //)
   }
   saveConsumo(){
     console.log(this.form);
@@ -82,13 +101,15 @@ export class CreateUpdateProductionComponent {
       comentario:this.form.get('comentario')?.value
 
     };
-   // this.myService.addConsumo(consumo).subscribe(data =>{
-       // alert('Registro guardado exitosamente');
-    //this.toastr.success('Registro Agregado','El registro se ha guardado exitosamente ');
-       //   this.router.navigate(['/list']);
-    ///},(errorData)=>this.toastr.error('Error :','Error on App')
+    console.log(consumo);
+   this.myService.addConsumo(consumo).subscribe(data =>{
+       //alert('Registro guardado exitosamente');
+ //   this.toastr.success('Registro Agregado','El registro se ha guardado exitosamente ');
+          this.route.navigate(['/list']);
+    }
+    //,(errorData)=>this.toastr.error('Error :','Error on App')
       
-      //)
+      )
   
 
 }
