@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Consumo } from 'src/models/consumo';
-import { Observable } from 'rxjs';
+import { Observable,BehaviorSubject } from 'rxjs';
+import { getLocaleDateFormat } from '@angular/common';
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +11,7 @@ export class ProductionService {
  
   myappurl:string ="https://localhost:5001/api/Production/";
   list:any=[];
+  private updateForm= new BehaviorSubject<Consumo>({ } as any)
   option='';
 
   constructor(private http:HttpClient) { }
@@ -35,5 +37,13 @@ export class ProductionService {
   getDate(){
    var date = new Date().toLocaleDateString();
    return date;
+  }
+
+  getFormData$():Observable<Consumo>{
+    return this.updateForm.asObservable();
+  }
+
+  update(consumo:Consumo){
+    this.updateForm.next(consumo);
   }
 }
