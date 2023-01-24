@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup,FormBuilder,Validators } from '@angular/forms';
 import { Consumo } from 'src/models/consumo';
 import { ProductionService } from 'src/app/services/production.service';
-//import { ToastrService} from 'ngx-toastr';
+import { ToastrService} from 'ngx-toastr';
 import { Route, Router } from '@angular/router';
 
 @Component({
@@ -21,7 +21,7 @@ export class CreateUpdateProductionComponent implements OnInit {
   constructor(private fb:FormBuilder,
               private myService:ProductionService,
               private route:Router,
-              //private toastr:ToastrService
+              private toastr:ToastrService
               ){
                 this.form=this.fb.group({
                   id:0,
@@ -104,10 +104,10 @@ export class CreateUpdateProductionComponent implements OnInit {
     console.log(consumo);
    this.myService.addConsumo(consumo).subscribe(data =>{
        //alert('Registro guardado exitosamente');
- //   this.toastr.success('Registro Agregado','El registro se ha guardado exitosamente ');
+        this.toastr.success('Registro Agregado','El registro se ha guardado exitosamente ');
           this.route.navigate(['/list']);
     }
-    //,(errorData)=>this.toastr.error('Error :','Error on App')
+       ,(errorData)=>this.toastr.error('Error :','Error on App')
       
       )
   
