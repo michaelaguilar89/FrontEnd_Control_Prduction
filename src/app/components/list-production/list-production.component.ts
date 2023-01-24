@@ -44,11 +44,13 @@ ngOnInit():void{
 
   }
   new(){
+    this.service.option="new";
     this.route.navigate(['create']);
   }
 
   edit(product:Consumo){
-
+    this.service.option="edit";
+    this.route.navigate(['update']);
   }
 
 }

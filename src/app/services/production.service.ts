@@ -10,6 +10,7 @@ export class ProductionService {
  
   myappurl:string ="https://localhost:5001/api/Production/";
   list:any=[];
+  option='';
 
   constructor(private http:HttpClient) { }
 

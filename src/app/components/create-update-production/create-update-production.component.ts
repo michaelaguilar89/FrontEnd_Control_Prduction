@@ -40,7 +40,7 @@ export class CreateUpdateProductionComponent implements OnInit {
   }//fin del constructor
 
   ngOnInit() {
-    if(this.id==0){
+    if(this.myService.option=='new'){
           
     var date = new Date()
     var date2= date.toISOString().slice(0,10);
@@ -55,6 +55,13 @@ export class CreateUpdateProductionComponent implements OnInit {
       
     
     })
+    }else{
+      if(this.myService.option=='edit'){
+        this.buttonName='Update';
+        this.formName='Update Record'
+      }
+      
+
     }
   }
 
