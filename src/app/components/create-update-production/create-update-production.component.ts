@@ -1,4 +1,9 @@
 import { Component } from '@angular/core';
+import { FormGroup,FormBuilder,Validators } from '@angular/forms';
+import { Consumo } from 'src/models/consumo';
+import { ProductionService } from 'src/app/services/production.service';
+//import { ToastrService} from 'ngx-toastr ';
+import { Route, Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-update-production',
@@ -7,4 +12,84 @@ import { Component } from '@angular/core';
 })
 export class CreateUpdateProductionComponent {
 
+  form:FormGroup;
+  id=0;
+  myConsumo:any;
+  buttonName='Save';
+  formName='Create Record';
+
+  constructor(private fb:FormBuilder,
+              private myService:ProductionService,
+              private route:Router){
+                this.form=this.fb.group({
+                  id:0,
+                  fecha:['',Validators.required],
+                  tanque:['',Validators.required],
+                  productoName:['',Validators.required],
+                  lote:['',Validators.required],
+                  cantidad:['',Validators.required],
+                  horaInicio:['',Validators.required],
+                  nivelFinal:['',Validators.required],
+                  responsable:['',Validators.required],
+                  comentario:['',Validators.required]
+                })
+            
+
+  }
+
+  action(){
+    if(this.id>=1){
+      this.updateConsumo();
+    }else{
+      this.saveConsumo();
+    }
+  }
+
+  updateConsumo(){
+    
+    const consumo:Consumo={
+      id:this.id,
+      fecha:this.form.get('fecha')?.value,
+      tanque:this.form.get('tanque')?.value,
+      productoName:this.form.get('productoName')?.value,
+      lote:this.form.get('lote')?.value,
+      cantidad:this.form.get('cantidad')?.value,
+      horaInicio:this.form.get('horaInicio')?.value,
+      nivelFinal:this.form.get('nivelFinal')?.value,
+      responsable:this.form.get('responsable')?.value,
+      comentario:this.form.get('comentario')?.value
+      
+    }
+
+    this.myService.updateConsumo(consumo).subscribe(data=>{
+     // this.toastr.info('Registro actualizado','El registro id :'+this.id+' se ha actulizado');
+      this.route.navigate(['/list']);
+    }
+    //,(errorData)=>this.toastr.error('Error :','Error on App')
+    )
+  }
+  saveConsumo(){
+    console.log(this.form);
+    const consumo:Consumo={
+      fecha:this.form.get('fecha')?.value,
+      tanque:this.form.get('tanque')?.value,
+      productoName:this.form.get('productoName')?.value,
+      lote:this.form.get('lote')?.value,
+      cantidad:this.form.get('cantidad')?.value,
+      horaInicio:this.form.get('horaInicio')?.value,
+      nivelFinal:this.form.get('nivelFinal')?.value,
+      responsable:this.form.get('responsable')?.value,
+      comentario:this.form.get('comentario')?.value
+
+    };
+   // this.myService.addConsumo(consumo).subscribe(data =>{
+       // alert('Registro guardado exitosamente');
+    //this.toastr.success('Registro Agregado','El registro se ha guardado exitosamente ');
+       //   this.router.navigate(['/list']);
+    ///},(errorData)=>this.toastr.error('Error :','Error on App')
+      
+      //)
+  
+
+}
 }

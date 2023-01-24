@@ -14,14 +14,20 @@ export class ProductionService {
   constructor(private http:HttpClient) { }
 
   getConsumo(){
-    this.http.get(this.myappurl).toPromise().then(data=>{
+   return this.http.get(this.myappurl).toPromise().then(data=>{
       this.list=data 
     })
   }
   getConsumobyDate(fecha:string){
-    this.http.get(this.myappurl+fecha).toPromise().then(data=>{
+   return this.http.get(this.myappurl+fecha).toPromise().then(data=>{
       this.list=data;
     })
   }
+  addConsumo(consumo:Consumo){
+    return this.http.post(this.myappurl,consumo);
+  }
 
+  updateConsumo(consumo:Consumo){
+    return this.http.put(this.myappurl,consumo);
+  }
 }
