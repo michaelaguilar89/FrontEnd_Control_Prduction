@@ -1,27 +1,30 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,OnDestroy } from '@angular/core';
 import { FormGroup,FormBuilder,Validators } from '@angular/forms';
 import { Consumo } from 'src/models/consumo';
 import { ProductionService } from 'src/app/services/production.service';
 import { ToastrService} from 'ngx-toastr';
 import { Route, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-create-update-production',
   templateUrl: './create-update-production.component.html',
   styleUrls: ['./create-update-production.component.css']
 })
-export class CreateUpdateProductionComponent implements OnInit {
+export class CreateUpdateProductionComponent implements OnInit,OnDestroy {
 
   form:FormGroup;
   id=0;
   myConsumo:any;
   buttonName='Save';
   formName='Create Record';
-
+  
   constructor(private fb:FormBuilder,
               private myService:ProductionService,
               private route:Router,
-              private toastr:ToastrService
+              private toastr:ToastrService,
+              private subscription:Subscription
+
               ){
                 this.form=this.fb.group({
                   id:0,
@@ -59,12 +62,17 @@ export class CreateUpdateProductionComponent implements OnInit {
       if(this.myService.option=='edit'){
         this.buttonName='Update';
         this.formName='Update Record'
+       this.subscription= this.myService.getFormData$().subscribe(data=>{
+          console.log(data);
+        })
       }
       
 
     }
   }
-
+ ngOnDestroy(): void {
+    this.subscription.unsubscribe();
+ }
   action(){
    // if(this.id>=1){
      // this.updateConsumo();

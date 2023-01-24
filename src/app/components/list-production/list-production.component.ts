@@ -50,6 +50,7 @@ ngOnInit():void{
 
   edit(product:Consumo){
     this.service.option="edit";
+    this.service.update(product);
     this.route.navigate(['update']);
   }
 
