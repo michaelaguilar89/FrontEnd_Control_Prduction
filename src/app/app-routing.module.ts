@@ -8,7 +8,9 @@ const routes: Routes = [
   {path:'list',component:ListProductionComponent},
   {path:'create',component:CreateUpdateProductionComponent},
   {path:'update',component:CreateUpdateProductionComponent},
-  {path:'delete',component:DeleteProductionComponent}
+  {path:'delete',component:DeleteProductionComponent},
+  {path:'',redirectTo:'list',pathMatch:'full'},
+  {path:'**',redirectTo:'list',pathMatch:'full'}
 ];
 
 @NgModule({
