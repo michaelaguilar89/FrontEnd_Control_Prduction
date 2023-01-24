@@ -1,10 +1,16 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
+//toastr
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { ToastrModule } from 'ngx-toastr';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule} from '@angular/common/http'
+
 //components
 import { ListProductionComponent } from './components/list-production/list-production.component';
 import { CreateUpdateProductionComponent } from './components/create-update-production/create-update-production.component';
@@ -21,14 +27,17 @@ import { HeaderComponent } from './components/header2/header.component';
     DeleteProductionComponent,
     GetByIdProductionComponent,
     FooterComponent,
-    HeaderComponent
-    //HeaderComponent
+    HeaderComponent,
+    
+    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule, 
+     BrowserAnimationsModule, // required animations module
+    ToastrModule.forRoot(), // ToastrModule added
   ],
   providers: [],
   bootstrap: [AppComponent]
