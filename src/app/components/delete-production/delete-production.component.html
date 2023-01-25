@@ -4,17 +4,18 @@
             <div class="card text-dark bg-light mb-3" style="max-width: 18rem;">
                 <div class="card-header">Delete Record</div>
                 <div class="card-body">
+                    
                   <h5 class="card-title">Are you sure delete the record?</h5>
-                  <p class="card-text">Id : {{id}}
-                    <br>Fecha : 2023
-                    <br>Tanque :T360
-                    <br>Producto: Termolita
-                    <br>Lote : 132030050
-                    <br>Cantidad : 20Kg
-                    <br>Hora Inicio : 10:00
-                    <br>Nivel Final : 75%
-                    <br>Responsable : Jorge
-                    <br>Comentario : 
+                  <p class="card-text">Id : {{myrecord.id}}
+                    <br>Fecha : {{myrecord.fecha}}
+                    <br>Tanque : {{myrecord.tanque}}
+                    <br>Producto: {{myrecord.productoName}}
+                    <br>Lote : {{myrecord.lote}}
+                    <br>Cantidad : {{myrecord.cantidad}} Kg
+                    <br>Hora Inicio : {{myrecord.horaInicio}}
+                    <br>Nivel Final : {{myrecord.nivelFinal}}
+                    <br>Responsable : {{myrecord.responsable}}
+                    <br>Comentario :  {{myrecord.comentario}}
                   </p>
                   <p class="card-text">
                     <button type="button" class="btn btn-danger mx-3">Yes</button>

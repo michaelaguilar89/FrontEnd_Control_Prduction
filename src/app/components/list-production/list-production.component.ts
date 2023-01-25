@@ -2,7 +2,8 @@ import { Component } from '@angular/core';
 import { Consumo } from 'src/models/consumo';
 import { ProductionService } from 'src/app/services/production.service';
 import { FormGroup,FormBuilder ,Validators} from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, TitleStrategy } from '@angular/router';
+import { trigger } from '@angular/animations';
 @Component({
   selector: 'app-list-production',
   templateUrl: './list-production.component.html',
@@ -53,9 +54,7 @@ ngOnInit():void{
     this.service.update(product);
     this.route.navigate(['update']);
   }
-  remove(id:number){
-    //if(confirm('Are you sure to delete the record id : '+id))
-      this.route.navigate(['delete']);
+  remove(product:Consumo){
     
   }
 }

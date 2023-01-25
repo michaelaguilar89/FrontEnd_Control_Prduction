@@ -13,6 +13,7 @@ export class ProductionService {
   list:any=[];
   private updateForm= new BehaviorSubject<Consumo>({ } as any)
   option='';
+  record:any;
 
   constructor(private http:HttpClient) { }
 
