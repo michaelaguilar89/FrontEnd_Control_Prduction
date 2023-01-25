@@ -1,8 +1,8 @@
-<div class="container">
+<div class="container " >
     
         <div class="row ">
             <div class="col-sm-10 mx-auto mt-5">
-              <div class="container2 mx-auto mt-5">
+              <div class="container2 mx-auto mt-5 border text-bg-primary p-3">
                 <form [formGroup]="form" (ngSubmit)="getByDate()">
                   <label> Search date : </label>
                   <input class="mx-2" formControlName="searchDate" type="date"  id="searchDate" >
@@ -10,7 +10,7 @@
                   <button type="button" (click)="getAll()" class="btn btn-light mx-4 border my-3" >Search All</button>
                 </form>
                 </div>
-                <table class="table mx-auto border">
+                <table class="table table-success table-striped mx-auto border">
                     <thead>
                       <tr>
                         <th scope="col">Fecha</th>
@@ -38,6 +38,7 @@
                         <td>{{product.responsable}}</td>
                         <td>{{product.comentario}}</td>
                         <td><a type="button" (click)="edit(product)"  class="btn btn-success">Edit</a></td>
+                        <td><a type="button" (click)="remove(product.id)"class="btn btn-danger" >Delete</a> </td>
                       </tr>
                     </tbody>
                   </table>

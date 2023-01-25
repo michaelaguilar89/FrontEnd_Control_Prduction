@@ -53,5 +53,9 @@ ngOnInit():void{
     this.service.update(product);
     this.route.navigate(['update']);
   }
-
+  remove(id:number){
+    //if(confirm('Are you sure to delete the record id : '+id))
+      this.route.navigate(['delete']);
+    
+  }
 }
