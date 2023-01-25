@@ -18,7 +18,7 @@ export class CreateUpdateProductionComponent implements OnInit,OnDestroy {
   myConsumo:any;
   buttonName='Save';
   formName='Create Record';
-   subscription:Subscription;
+   //subscription:Subscription;
   constructor(private fb:FormBuilder,
               private myService:ProductionService,
               private route:Router,
@@ -61,23 +61,37 @@ export class CreateUpdateProductionComponent implements OnInit,OnDestroy {
       if(this.myService.option=='edit'){
         this.buttonName='Update';
         this.formName='Update Record'
-         this.subscription= this.myService.getFormData$().subscribe(data=>{
+         this.myService.getFormData$().subscribe(data=>{
           console.log(data);
+          this.myConsumo=data;
         })
-      }
+        this.form.patchValue({
+            fecha:this.myConsumo.fecha,
+            tanque:this.myConsumo.tanque,
+            productoName:this.myConsumo.productoName,
+            lote:this.myConsumo.lote,
+            cantidad:this.myConsumo.cantidad,
+            horaInicio:this.myConsumo.horaInicio,
+            nivelFinal:this.myConsumo.nivelFinal,
+            responsable:this.myConsumo.responsable,
+            comentario:this.myConsumo.comentario
+        });
+        this.id=this.myConsumo.id;
+      }//fin del if
       
 
-    }
+    }//fin del else
   }
  ngOnDestroy(): void {
    
  }
   action(){
-   // if(this.id>=1){
-     // this.updateConsumo();
-    //}else{
+   if(this.myService.option==='edit'){
+     this.updateConsumo();
+    }
+    if(this.myService.option==='new'){
       this.saveConsumo();
-    //}
+    }
   }
 
   updateConsumo(){
@@ -96,12 +110,12 @@ export class CreateUpdateProductionComponent implements OnInit,OnDestroy {
       
     }
 
-   // this.myService.updateConsumo(consumo).subscribe(data=>{
-     // this.toastr.info('Registro actualizado','El registro id :'+this.id+' se ha actulizado');
+      this.myService.updateConsumo(consumo).subscribe(data=>{
+     this.toastr.info('Registro actualizado','El registro id :'+this.id+' se ha actulizado');
       this.route.navigate(['/list']);
-    //}
-    //,(errorData)=>this.toastr.error('Error :','Error on App')
-    //)
+    }
+    ,(errorData)=>this.toastr.error('Error :','Error on App')
+    )
   }
   saveConsumo(){
     console.log(this.form);
