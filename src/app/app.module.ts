@@ -14,7 +14,7 @@ import { Subscription } from 'rxjs';
 //components
 import { ListProductionComponent } from './components/list-production/list-production.component';
 import { CreateUpdateProductionComponent } from './components/create-update-production/create-update-production.component';
-import { DeleteProductionComponent } from './components/delete-production/delete-production.component';
+
 import { GetByIdProductionComponent } from './components/get-by-id-production/get-by-id-production.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header2/header.component';
@@ -24,7 +24,7 @@ import { HeaderComponent } from './components/header2/header.component';
     AppComponent,
     ListProductionComponent,
     CreateUpdateProductionComponent,
-    DeleteProductionComponent,
+  
     GetByIdProductionComponent,
     FooterComponent,
     HeaderComponent,

@@ -38,7 +38,7 @@
                         <td>{{product.responsable}}</td>
                         <td>{{product.comentario}}</td>
                         <td><a type="button" (click)="edit(product)"  class="btn btn-success">Edit</a></td>
-                        <td><a type="button" (click)="remove(product)"class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#staticBackdrop" >Delete</a> </td>
+                        <td><a type="button" class="btn btn-danger" (click)="set(product)" data-bs-toggle="modal" data-bs-target="#staticBackdrop" >Delete</a> </td>
                                  <!-- Modal -->
 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -64,7 +64,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-danger mx-3">Yes</button>
+        <button type="button" (click)="remove()" data-bs-dismiss="modal" class="btn btn-danger mx-3">Yes</button>
       </div>
     </div>
   </div>

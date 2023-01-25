@@ -3,7 +3,7 @@ import { Consumo } from 'src/models/consumo';
 import { ProductionService } from 'src/app/services/production.service';
 import { FormGroup,FormBuilder ,Validators} from '@angular/forms';
 import { Router, TitleStrategy } from '@angular/router';
-import { trigger } from '@angular/animations';
+import { ToastrService} from 'ngx-toastr';
 @Component({
   selector: 'app-list-production',
   templateUrl: './list-production.component.html',
@@ -11,10 +11,13 @@ import { trigger } from '@angular/animations';
 })
 export class ListProductionComponent {
   form:FormGroup;
+  id:number=0;
 
   constructor(public service:ProductionService,
               private fb:FormBuilder,
-              private route:Router){
+              private route:Router,
+              private toastr:ToastrService
+              ){
       this.form=this.fb.group({
         searchDate:['',Validators.required]
     })
@@ -54,7 +57,18 @@ ngOnInit():void{
     this.service.update(product);
     this.route.navigate(['update']);
   }
-  remove(product:Consumo){
+
+   set(product:Consumo){
+    
+    
+   }
+  remove(){
+alert('id : '+this.id);
+  // this.service.removeConsumo(id).subscribe(data=>{
+      this.toastr.warning('Record deleted','The record was deleted');
+      this.route.navigate(['/list']);
+     
+    //},(errorData)=>this.toastr.error('Error ' ,'Error on App'))
     
   }
 }
