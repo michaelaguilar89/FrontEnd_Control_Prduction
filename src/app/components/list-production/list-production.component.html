@@ -49,22 +49,22 @@
       </div>
       <div class="modal-body">
         <h3>Are you sure delete the record?</h3>
-        <p class="card-text">Id : {{product.id}}
-          <br>Fecha : {{product.fecha}}
-          <br>Tanque : {{product.tanque}}
-          <br>Producto: {{product.productoName}}
-          <br>Lote : {{product.lote}}
-          <br>Cantidad : {{product.cantidad}} Kg
-          <br>Hora Inicio : {{product.horaInicio}}
-          <br>Nivel Final : {{product.nivelFinal}}
-          <br>Responsable : {{product.responsable}}
-          <br>Comentario :  {{product.comentario}}
+        <p class="card-text">Id : {{service.recordupdate.id}}
+          <br>Fecha : {{service.recordupdate.fecha}}
+          <br>Tanque : {{service.recordupdate.tanque}}
+          <br>Producto: {{service.recordupdate.productoName}}
+          <br>Lote : {{service.recordupdate.lote}}
+          <br>Cantidad : {{service.recordupdate.cantidad}} Kg
+          <br>Hora Inicio : {{service.recordupdate.horaInicio}}
+          <br>Nivel Final : {{service.recordupdate.nivelFinal}}
+          <br>Responsable : {{service.recordupdate.responsable}}
+          <br>Comentario :  {{service.recordupdate.comentario}}
         </p>
        
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" (click)="remove()" data-bs-dismiss="modal" class="btn btn-danger mx-3">Yes</button>
+        <button type="button" (click)="remove()"  class="btn btn-danger mx-3">Yes</button>
       </div>
     </div>
   </div>

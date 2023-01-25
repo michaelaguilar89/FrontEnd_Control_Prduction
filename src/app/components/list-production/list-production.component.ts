@@ -12,11 +12,13 @@ import { ToastrService} from 'ngx-toastr';
 export class ListProductionComponent {
   form:FormGroup;
   id:number=0;
+  
 
   constructor(public service:ProductionService,
               private fb:FormBuilder,
               private route:Router,
               private toastr:ToastrService
+              
               ){
       this.form=this.fb.group({
         searchDate:['',Validators.required]
@@ -60,15 +62,17 @@ ngOnInit():void{
 
    set(product:Consumo){
     
-    
+    //console.log(product);
+    this.service.recordupdate=product;
+    console.log(this.service.recordupdate);
    }
   remove(){
-alert('id : '+this.id);
-  // this.service.removeConsumo(id).subscribe(data=>{
+
+      this.service.removeConsumo(this.service.recordupdate.id).subscribe(data=>{
       this.toastr.warning('Record deleted','The record was deleted');
-      this.route.navigate(['/list']);
+      window.location.reload();
      
-    //},(errorData)=>this.toastr.error('Error ' ,'Error on App'))
+    },(errorData)=>this.toastr.error('Error ' ,'Error on App'))
     
   }
 }
