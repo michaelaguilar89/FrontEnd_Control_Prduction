@@ -44,6 +44,6 @@ export class ProductionService {
   }
 
   update(consumo:Consumo){
-    this.updateForm.next(consumo);
+   return this.updateForm.next(consumo);
   }
 }

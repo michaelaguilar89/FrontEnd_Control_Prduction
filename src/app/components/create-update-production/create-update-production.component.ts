@@ -18,13 +18,12 @@ export class CreateUpdateProductionComponent implements OnInit,OnDestroy {
   myConsumo:any;
   buttonName='Save';
   formName='Create Record';
-  
+   subscription:Subscription;
   constructor(private fb:FormBuilder,
               private myService:ProductionService,
               private route:Router,
               private toastr:ToastrService,
-              private subscription:Subscription
-
+              //public subscription:Subscription
               ){
                 this.form=this.fb.group({
                   id:0,
@@ -62,7 +61,7 @@ export class CreateUpdateProductionComponent implements OnInit,OnDestroy {
       if(this.myService.option=='edit'){
         this.buttonName='Update';
         this.formName='Update Record'
-       this.subscription= this.myService.getFormData$().subscribe(data=>{
+         this.subscription= this.myService.getFormData$().subscribe(data=>{
           console.log(data);
         })
       }
@@ -71,7 +70,7 @@ export class CreateUpdateProductionComponent implements OnInit,OnDestroy {
     }
   }
  ngOnDestroy(): void {
-    this.subscription.unsubscribe();
+   
  }
   action(){
    // if(this.id>=1){

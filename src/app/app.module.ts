@@ -10,7 +10,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule} from '@angular/common/http'
-
+import { Subscription } from 'rxjs';
 //components
 import { ListProductionComponent } from './components/list-production/list-production.component';
 import { CreateUpdateProductionComponent } from './components/create-update-production/create-update-production.component';
@@ -38,6 +38,7 @@ import { HeaderComponent } from './components/header2/header.component';
     HttpClientModule, 
      BrowserAnimationsModule, // required animations module
     ToastrModule.forRoot(), // ToastrModule added
+  
   ],
   providers: [],
   bootstrap: [AppComponent]
