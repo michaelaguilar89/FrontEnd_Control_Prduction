@@ -33,7 +33,9 @@ export class ProductionService {
   updateConsumo(consumo:Consumo):Observable<Consumo>{
     return this.http.put<Consumo>(this.myappurl,consumo);
   }
-
+  removeConsumo(id:number):Observable<Consumo>{
+    return this.http.delete<Consumo>(this.myappurl+id);
+  }
   getDate(){
    var date = new Date().toLocaleDateString();
    return date;
