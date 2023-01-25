@@ -2,12 +2,12 @@
     
         <div class="row ">
             <div class="col-sm-10 mx-auto mt-5">
-              <div class="container2 mx-auto mt-5 border text-bg-primary p-3">
+              <div class="container2 mx-auto mt-5 border p-3" id="options">
                 <form [formGroup]="form" (ngSubmit)="getByDate()">
                   <label> Search date : </label>
                   <input class="mx-2" formControlName="searchDate" type="date"  id="searchDate" >
-                  <button type="submit" class="btn btn-light mx-4 border my-3" >Search</button>
-                  <button type="button" (click)="getAll()" class="btn btn-light mx-4 border my-3" >Search All</button>
+                  <button type="submit" class="btn btn-success mx-4 my-3" >Search</button>
+                  <button type="button" (click)="getAll()" class="btn btn-success mx-4 my-3" >Search All</button>
                 </form>
                 </div>
                 <table class="table table-success table-striped mx-auto border">
@@ -23,7 +23,7 @@
                         <th scope="col">Responsable</th>
                         <th scope="col">Comentarios</th>
                         <th scope="col">Acciones</th>
-                        <th scope="button"><a class="btn btn-primary" (click)="new()" role="button">New</a></th>
+                        <th scope="button"><a class="btn btn-primary " (click)="new()" role="button">New</a></th>
                       </tr>
                     </thead>
                     <tbody>
