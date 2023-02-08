@@ -9,7 +9,8 @@ import { getLocaleDateFormat } from '@angular/common';
 })
 export class ProductionService {
  
-  myappurl:string ="https://localhost:5001/api/Production/";
+  //myappurl:string ="https://localhost:5001/api/Production/";
+   myappurl:string="https://webapicontrolproduction.azurewebsites.net/api/Production";
   list:any=[];
   private updateForm= new BehaviorSubject<Consumo>({ } as any)
   option='';

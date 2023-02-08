@@ -34,9 +34,12 @@ ngOnInit():void{
    var fecha=new Date(today);
    console.log('today : '+today);
    console.log('fecha : '+fecha);
- this.service.getConsumobyDate(today);
+ //this.service.getConsumobyDate(today);
+ this.service.getConsumo();
 
-}  getByDate(){
+}//end of ngOnInit 
+
+ getByDate(){
   var a= this.form.get('searchDate')?.value;
   alert('fecha de busqueda : '+a);
    this.service.getConsumobyDate(a);
