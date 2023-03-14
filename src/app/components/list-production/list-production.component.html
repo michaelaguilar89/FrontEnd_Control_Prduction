@@ -10,7 +10,15 @@
                   <button type="button" (click)="getAll()" class="btn btn-success mx-4 my-3" >Search All</button>
                 </form>
                 </div>
-                <table class="table table-success table-striped mx-auto border">
+               
+              <!--  <div class="container2 " style="min-height: 350px;" *ngIf="list===false || list===undefined">
+                  <div class="spinner-border text-danger mx-5 my-5 w-15 h-15"  role="status">
+                    <span class="visually-hidden">Loading...</span>
+                  </div>  
+                </div>
+                -->
+                
+                <table class="table table-success table-striped mx-auto border" >
                     <thead>
                       <tr>
                         <th scope="col">Fecha</th>
@@ -26,8 +34,10 @@
                         <th scope="button"><a class="btn btn-primary " (click)="new()" role="button">New</a></th>
                       </tr>
                     </thead>
+                   
+                   
                     <tbody>
-                        <tr *ngFor="let product of service.list.result">
+                        <tr *ngFor="let product of service.lista.result">
                         <td>{{product.fecha}}</td>
                         <td>{{product.tanque}}</td>
                         <td>{{product.productoName}}</td>

@@ -9,9 +9,9 @@ import { getLocaleDateFormat } from '@angular/common';
 })
 export class ProductionService {
  
-  //myappurl:string ="https://localhost:5001/api/Production/";
-   myappurl:string="https://webapicontrolproduction.azurewebsites.net/api/Production/";
-  list:any=[];
+  myappurl:string ="https://localhost:5001/api/Production/";
+ //  myappurl:string="https://webapicontrolproduction.azurewebsites.net/api/Production/";
+  lista:any;
   private updateForm= new BehaviorSubject<Consumo>({ } as any)
   option='';
   recordupdate:any=[];
@@ -19,13 +19,13 @@ export class ProductionService {
   constructor(private http:HttpClient) { }
 
   getConsumo(){
-   return this.http.get(this.myappurl).toPromise().then(data=>{
-      this.list=data 
+     this.http.get(this.myappurl).toPromise().then(data=>{
+     this.lista=data
     })
   }
   getConsumobyDate(fecha:string){
    return this.http.get(this.myappurl+fecha).toPromise().then(data=>{
-      this.list=data;
+      this.lista=data;
     })
   }
   addConsumo(consumo:Consumo):Observable<Consumo>{

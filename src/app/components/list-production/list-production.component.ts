@@ -12,7 +12,8 @@ import { ToastrService} from 'ngx-toastr';
 export class ListProductionComponent {
   form:FormGroup;
   id:number=0;
-  
+  list:any;
+  count:number=0;
 
   constructor(public service:ProductionService,
               private fb:FormBuilder,
@@ -34,22 +35,30 @@ ngOnInit():void{
    var fecha=new Date(today);
    console.log('today : '+today);
    console.log('fecha : '+fecha);
- //this.service.getConsumobyDate(today);
- this.service.getConsumo();
+   
+ //this.getByDate();
+ this.getAll();
+
+
 
 }//end of ngOnInit 
 
  getByDate(){
   var a= this.form.get('searchDate')?.value;
-  alert('fecha de busqueda : '+a);
-   this.service.getConsumobyDate(a);
-  console.log(this.service.list.result);
-  console.log('DisplayMessages:'+this.service.list.DisplayMessage)
 
+ // alert('fecha de busqueda : '+a);
+   this.service.getConsumobyDate(a);
+ this.list= this.service.lista.result;
+ console.log("GetByDate  : "+this.list);
 }
   getAll(){
+  
     this.service.getConsumo();
-    console.log(this.service.list.result);
+    
+   
+   console.log("GetAll : "+this.service.lista.result);
+  
+
 
   }
   new(){
