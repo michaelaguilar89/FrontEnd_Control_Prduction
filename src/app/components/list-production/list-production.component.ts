@@ -14,6 +14,7 @@ export class ListProductionComponent {
   id:number=0;
   list:any;
   count:number=0;
+  title='';
 
   constructor(public service:ProductionService,
               private fb:FormBuilder,
@@ -75,6 +76,22 @@ ngOnInit():void{
    set(product:Consumo){
     
     //console.log(product);
+    this.service.recordupdate=product;
+    console.log(this.service.recordupdate);
+   }
+
+   setRemove(product:Consumo){
+    this.title='Delete Record';
+    //console.log(product);
+    this.service.recordupdate=product;
+    console.log(this.service.recordupdate);
+   }
+
+   
+   setDetails(product:Consumo){
+    
+    //console.log(product);
+    this.title='Details Record';
     this.service.recordupdate=product;
     console.log(this.service.recordupdate);
    }

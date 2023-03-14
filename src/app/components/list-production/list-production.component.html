@@ -1,7 +1,7 @@
-<div class="container " >
+<div class="container  sm-12 md-12 lg-10"  >
     
         <div class="row ">
-            <div class="col-sm-10 mx-auto mt-5">
+            <div class="col-sm-10 mx-auto mt-5" id="options">
               <div class="container2 mx-auto mt-5 border p-3" id="options">
                 <form [formGroup]="form" (ngSubmit)="getByDate()">
                   <label> Search date : </label>
@@ -17,8 +17,8 @@
                   </div>  
                 </div>
                 -->
-                
-                <table class="table table-success table-striped mx-auto border" >
+                <div class="table-responsive">
+                  <table class="table table-striped mx-auto" >
                     <thead>
                       <tr>
                         <th scope="col">Fecha</th>
@@ -47,18 +47,27 @@
                         <td>{{product.nivelFinal}}</td>
                         <td>{{product.responsable}}</td>
                         <td>{{product.comentario}}</td>
-                        <td><a type="button" (click)="edit(product)"  class="btn btn-success">Edit</a></td>
-                        <td><a type="button" class="btn btn-danger" (click)="set(product)" data-bs-toggle="modal" data-bs-target="#staticBackdrop" >Delete</a> </td>
+                        <td>
+                          <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                            <button type="button" class="btn btn-info"(click)="setDetails(product)"
+                             data-bs-toggle="modal" data-bs-target="#staticBackdrop" >Details</button>
+                            <button type="button" (click)="edit(product)" class="btn btn-secondary">Edit</button>
+                            <button type="button" class="btn btn-danger" (click)="setRemove(product)" 
+                            data-bs-toggle="modal" data-bs-target="#staticBackdrop" >Delete</button>
+                          </div>
+                          
+                          
+                         
                                  <!-- Modal -->
 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="staticBackdropLabel">Delete Record</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <h5 class="modal-title" id="staticBackdropLabel">{{title}}</h5>
+        <button type="button" class="btn-close  ps-4" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <h3>Are you sure delete the record?</h3>
+        <h3 *ngIf="title=='Delete Record'">Are you sure delete the record?</h3>
         <p class="card-text">Id : {{service.recordupdate.id}}
           <br>Fecha : {{service.recordupdate.fecha}}
           <br>Tanque : {{service.recordupdate.tanque}}
@@ -74,7 +83,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" (click)="remove()"  class="btn btn-danger mx-3">Yes</button>
+        <button type="button" (click)="remove()" *ngIf="title=='Delete Record'"  class="btn btn-danger mx-3">Yes</button>
       </div>
     </div>
   </div>
@@ -83,7 +92,9 @@
                       </tr>
                     </tbody>
                   </table>
-            </div>
+
+                </div>
+                            </div>
    
         </div>
         
